@@ -1,10 +1,115 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <title>FAQ</title>
+    <style>
+        /* Custom styles */
+                .navbar {
+                    background-color: transparent;
+                    transition: background-color 0.5s ease;
+                }
+
+                .navbar.scrolled,
+                .navbar.toggled {
+                    background-color: white !important;
+                }
+
+                .footer {
+                    background-color: #343a40;
+                    color: white;
+                    position: relative;
+                    bottom: 0;
+                    width: 100%;
+                    padding: 20px 0;
+                }
+
+                .footer a {
+                    color: white;
+                    text-decoration: none;
+                }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+
+                .footer-icons a {
+                    margin: 0 10px;
+                    color: white;
+                    font-size: 1.5rem;
+                }
+
+                .service-card {
+                    margin-bottom: 30px;
+                }
+
+                .service-card .card-img-top {
+                    height: 200px; /* Adjust height as needed */
+                    object-fit: cover;
+                }
+
+                .service-card .card-body {
+                    padding: 1.25rem;
+                }
+
+                .service-card .card-title {
+                    font-size: 1.25rem;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+
+                .service-card .card-text {
+                    font-size: 1rem;
+                    color: #6c757d;
+                }
+
+                /* Center align columns on medium devices and above */
+                @media (min-width: 768px) {
+                    .service-card .card {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        height: 100%;
+                    }
+                }
+    </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid">
+        <img src="{% static 'images/лого.jpg' %}" style="width: 7%">
+        <a class="navbar-brand mx-auto" href="{% url 'index' %}"><strong>Logistic Site</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                       href="{% url 'services' %}">Сервисы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                       href="{% url 'contact' %}">Контакты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'faq' %}">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'news' %}">Новости</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'about' %}">О нас</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container mt-5">
     <h1 class="text-center mb-4">Вопросы - Ответы</h1>
     <form method="post" novalidate>
@@ -18,57 +123,28 @@
 
 <footer class="footer mt-auto py-3">
     <div class="container text-center">
-        <span>© 2024 TOUR AKTAU. Все права защищены.</span>
+        <span>© 2024 Logistic Site. Все права защищены.</span>
         <div class="footer-links mt-3">
             <a href="{% url 'services' %}" class="btn btn-outline-light btn-sm">Сервисы</a>
             <a href="{% url 'contact' %}" class="btn btn-outline-light btn-sm">Контакты</a>
             <a href="{% url 'faq' %}" class="btn btn-outline-light btn-sm">FAQ</a>
+            <a href="{% url 'news' %}" class="btn btn-outline-light btn-sm">Новости</a>
         </div>
         <div class="footer-icons mt-3">
-            <a href="https://www.instagram.com/tour.aktau.kazakhstan/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"
                      width="30">
             </a>
-            <span>Телефон: +7 705 344 6624</span>
-            <span>| +8 776 166 2786</span>
+
         </div>
     </div>
 </footer>
-<button id="scrollTopBtn" class="btn btn-primary btn-lg rounded-circle p-3"
-        style="background-color: #343a40; color: white; position: fixed; bottom: 20px; right: 20px; display: none;">
-    Наверх
-</button>
 
-<script>
-    // Когда документ загружен
-    document.addEventListener("DOMContentLoaded", function() {
-        // Кнопка для прокрутки страницы вверх
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
+<!-- Подключение Bootstrap JS и Popper.js -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
-        // При скролле страницы
-        window.onscroll = function() {
-            // Если скролл больше 20 пикселей, показываем кнопку, иначе скрываем
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                scrollTopBtn.style.display = "block";
-            } else {
-                scrollTopBtn.style.display = "none";
-            }
-        };
-
-        // При клике на кнопку прокрутки вверх
-        scrollTopBtn.addEventListener('click', function() {
-            // Прокручиваем страницу вверх с плавной анимацией
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    });
-</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-</body>
-</html>
 </body>
 </html>
