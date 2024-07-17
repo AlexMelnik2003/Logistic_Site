@@ -28,6 +28,17 @@
         .navbar.toggled {
             background-color: white !important;
         }
+        .navbar-nav .nav-link {
+    font-size: 1.2rem; /* Увеличенный размер текста */
+    padding: 10px 20px; /* Увеличенные отступы */
+    border-radius: 25px; /* Закругленные края */
+    font-weight: bold; /* Жирный текст */
+    text-decoration: underline; /* Подчеркнутый текст */
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px; /* Расстояние между кнопками */
+}
 
         .header {
             background: url('/static/images/фон.jpg') no-repeat center top;
@@ -44,12 +55,19 @@
             position: relative;
             z-index: 1001; /* Выше чем навбар */
         }
-        .header h1 {
-            font-size: 3rem;
-        }
-        .container {
-            padding: 2rem;
-        }
+        .header {
+    background-color: #f8f9fa; /* Фон для всего блока */
+    padding: 20px;
+}
+
+.header-content {
+    border: 2px solid rgba(52, 58, 64, 0.8); /* Цвет рамки с прозрачностью */
+    background-color: rgba(52, 58, 64, 0.7); /* Прозрачный темный фон */
+    color: #ffffff; /* Цвет текста */
+    padding: 20px;
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для объема */
+}
         .card {
             transition: transform 0.3s;
         }
@@ -87,35 +105,79 @@
             color: white;
             font-size: 1.5rem;
         }
+        body {
+            font-family: 'PT Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container-1 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .direction-block-1 {
+            background-color: #f0f0f0;
+            width: calc(50% - 10px);
+            margin: 5px 0;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .direction-block-1 img {
+            width: 100px;
+            height: auto;
+        }
+        .direction-block-1 h3 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin: 20px 0 10px;
+        }
+        .direction-block-1 span {
+            font-size: 18px;
+            color: #0a0a0a;
+        }
+        @media (max-width: 768px) {
+            .direction-block-1 {
+                width: calc(100% - 10px);
+            }
+        }
     </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
-        <img src="{% static 'images/лого.jpg' %}" style="width: 7%">
-        <a class="navbar-brand mx-auto" href="{% url 'index' %}"><strong>Logistic Site</strong></a>
+        <img src="{% static 'images/лого.png' %}" style="width: 7%">
+        <a class="navbar-brand mx-auto" href="{% url 'index' %}"><strong>Альбатрос Транс</strong></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
                        href="{% url 'services' %}">Сервисы</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
                        href="{% url 'contact' %}">Контакты</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'faq' %}">FAQ</a>
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
+                       href="{% url 'faq' %}">FAQ</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'news' %}">Новости</a>
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
+                       href="{% url 'news' %}">Новости</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'about' %}">О нас</a>
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
+                       href="{% url 'about' %}">О нас</a>
                 </li>
             </ul>
         </div>
@@ -124,287 +186,359 @@
 
 <div class="header">
     <div class="header-content">
-        <h1>Добро пожаловать в Logistics Company</h1>
-        <p>Logistics Company Logo</p>
+        <h1>Добро пожаловать в Альбатрос Транс!</h1>
+        <h5>Альбатрос Транс — ведущая логистическая компания, специализирующаяся на предоставлении комплексных
+            транспортных
+            и складских решений. Мы предлагаем надежные и эффективные услуги по международным грузоперевозкам,
+            складскому хранению, экспедиторскому сопровождению и таможенному оформлению. Наши профессионалы обеспечат
+            своевременную доставку вашего груза в любую точку мира, соблюдая все стандарты безопасности и качества.
+            доверяйте нам свои логистические задачи, и мы найдем оптимальные пути их решения.</h5>
     </div>
 </div>
 <div class="container mt-5">
-    <div id="zolo_heading_element_128233982066963444235f1" class="zolo_heading_element heading_style1 animated hiding reshenie" data-animation = "fadeInUp" data-delay = "500" style=" text-align:right"><div class="zolo_heading_element_text"><h2 class="zolo-title "><span class="title_text" style="font-family:PT Sans; font-weight:700; font-style:normal; font-size: 72px; line-height: 50px; ">Решения</span></h2><div class="zolo-heading-delimiter"> <span class="delimiter_style_line"></span> </div></div></div>
-	<div class="wpb_text_column wpb_content_element  vc_custom_1564331612283 reshen" >
-		<div class="wpb_wrapper">
-			<h3 class="tn-atom">Наш основной профиль работы — <strong>выполнение логистических задач любой сложности</strong>. Мы выполняем <strong>перевозки стандартных и негабаритных грузов</strong>.</h3>
-
-		</div>
-	</div>
-<div style=" " class="vc_row wpb_row vc_inner vc_row-fluid section-front vc_custom_1563905688589 apress_inner_row_class_1476560274669634442508f"><div class="wpb_column vc_column_container vc_col-sm-4 vc_col-xs-12"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="aio-icon-component   front-top style_3"><div id="Info-box-wrap-7583" class="aio-icon-box top-icon" style=""  ><div class="aio-icon-top"><div class="ult-just-icon-wrapper  "><div class="align-icon" style="text-align:center;">
-<div class="aio-icon-img " style="font-size:100px;display:inline-block;" data-animation="fadeInDown" data-animation-delay="03">
-	<img class="img-icon" style="width: 15%" alt="null" src="https://asiatransit.kg/wp-content/uploads/2019/07/5_1.png"/>
-</div></div></div></div><div class="aio-icon-header" ><h3 class="aio-icon-title ult-responsive"  data-ultimate-target='#Info-box-wrap-7583 .aio-icon-title'  data-responsive-json-new='{"font-size":"desktop:20px;","line-height":"desktop:30px;"}'  style="font-weight:bold;color:#333333;">Оборудование и техника</h3></div> <!-- header --><div class="aio-icon-description ult-responsive"  data-ultimate-target='#Info-box-wrap-7583 .aio-icon-description'  data-responsive-json-new='{"font-size":"desktop:18px;","line-height":"desktop:20px;"}'  style="color:#333333;">Специализированные транспортные услуги по перевозке негабаритных и тяжеловесных грузов, требующих проектной координации и контроля.</div> <!-- description --></div> <!-- aio-icon-box --></div> <!-- aio-icon-component --></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4 vc_col-xs-12"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="aio-icon-component   front-top style_3"><div id="Info-box-wrap-2315" class="aio-icon-box top-icon" style=""  ><div class="aio-icon-top"><div class="ult-just-icon-wrapper  "><div class="align-icon" style="text-align:center;">
-<div class="aio-icon-img " style="font-size:100px;display:inline-block;" data-animation="fadeInDown" data-animation-delay="03">
-	<img class="img-icon" alt="null" src="https://asiatransit.kg/wp-content/uploads/2019/07/front3_1.png"/>
-</div></div></div></div><div class="aio-icon-header" ><h3 class="aio-icon-title ult-responsive"  data-ultimate-target='#Info-box-wrap-2315 .aio-icon-title'  data-responsive-json-new='{"font-size":"desktop:20px;","line-height":"desktop:30px;"}'  style="font-weight:bold;color:#333333;">Стандартные промышленные грузы</h3></div> <!-- header --><div class="aio-icon-description ult-responsive"  data-ultimate-target='#Info-box-wrap-2315 .aio-icon-description'  data-responsive-json-new='{"font-size":"desktop:18px;","line-height":"desktop:20px;"}'  style="color:#333333;">Оптимальные варианты доставки стандартных грузов в контейнерах и автотранспортом, специализация на мультимодальных перевозках.</div> <!-- description --></div> <!-- aio-icon-box --></div> <!-- aio-icon-component --></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4 vc_col-xs-12"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="aio-icon-component   front-top style_3"><div id="Info-box-wrap-5612" class="aio-icon-box top-icon" style=""  ><div class="aio-icon-top"><div class="ult-just-icon-wrapper  "><div class="align-icon" style="text-align:center;">
-<div class="aio-icon-img " style="font-size:100px;display:inline-block;" data-animation="fadeInDown" data-animation-delay="03">
-	<img class="img-icon" alt="null" src="https://asiatransit.kg/wp-content/uploads/2019/07/front-1.png"/>
-</div></div></div></div><div class="aio-icon-header" ><h3 class="aio-icon-title ult-responsive"  data-ultimate-target='#Info-box-wrap-5612 .aio-icon-title'  data-responsive-json-new='{"font-size":"desktop:20px;","line-height":"desktop:30px;"}'  style="font-weight:bold;color:#333333;">Запчасти и комплектующие</h3></div> <!-- header --><div class="aio-icon-description ult-responsive"  data-ultimate-target='#Info-box-wrap-5612 .aio-icon-description'  data-responsive-json-new='{"font-size":"desktop:18px;","line-height":"desktop:20px;"}'  style="color:#333333;">Доставка небольших и срочных партий груза по сложным направлениям.</div> <!-- description --></div> <!-- aio-icon-box --></div> <!-- aio-icon-component --></div></div></div></div><div id="ult-easy-separator-1138304933669634442a13a" class="ult-easy-separator-wrapper ult-responsive ult-bottom-easy-separator ult-easy-separator-no-default ult-right-img" style="transform: translate(0,70%)!important;-ms-transform: translate(0,70%)!important;-webkit-transform: translate(0,70%)!important;right:0%;transform: translate(0%,70%);-ms-transform: translate(0%,70%);-webkit-transform: translate(0%,70%);" data-vc-row="wpb_row"  data-ultimate-target='#ult-easy-separator-1138304933669634442a13a'  data-responsive-json-new='{"width":""}' ><div class="ult-easy-separator-inner-wrapper"><div class=" ult-animation ult-animate-viewport " style="opacity:0;"   data-animate="fadeInUpBig"  data-animation-delay="0"  data-animation-duration="2"  data-animation-iteration="1"  data-opacity_start_effect=""><img class="ult-easy-separator-img" alt="null" src="https://asiatransit.kg/wp-content/uploads/2019/08/razdelit2.png" /></div></div></div></div></div></div></div><div id="b_2" data-fullscreen-anchor-id="b_2" data-row-text-color="dark" data-vc-full-width="true" data-vc-full-width-init="false" style=" " class="vc_row wpb_row zolo_wpb_row vc_row-fluid napravleniya-2 apress_row_class_674970112669634442c2be vc_custom_1563963528452"><div class="wpb_column vc_column_container vc_col-sm-12 apress_col_id_653223772669634442d3e8 hover_style_none"><div class="layer vc_column-inner "  ><div class="wpb_wrapper">
-<div id="zolo_heading_element_54651925669634442dffc" class="zolo_heading_element heading_style1 animated hiding " data-animation = "fadeInUp" data-delay = "500" style=" text-align:left">
-    <div class="zolo_heading_element_text">
-    <h2 class="zolo-title">
-        <span class="title_text" style="font-family: PT Sans; font-weight: 700; font-style: normal; font-size: 72px; line-height: 50px;">Направления</span>
-    </h2>
-    <div class="zolo-heading-delimiter">
-        <span class="delimiter_style_line"></span>
+    <div id="zolo_heading_element_128233982066963444235f1"
+         class="zolo_heading_element heading_style1 animated hiding reshenie" data-animation="fadeInUp" data-delay="500"
+         style=" text-align:center">
+        <div class="zolo_heading_element_text"><h2 class="zolo-title "><span class="title_text"
+                                                                             style="font-family:PT Sans; font-weight:700; font-style:normal; font-size: 72px; line-height: 50px; ">Решения</span>
+        </h2>
+            <div class="zolo-heading-delimiter"><span class="delimiter_style_line"></span></div>
+        </div>
     </div>
-    <h4 class="zolo-sub-title">
-        <span class="zolo-sub-title-text">Основными направлениями работы «ASIA TRANSIT» являются перевозки грузов</span>
-    </h4>
-</div>
+    <div class="wpb_text_column wpb_content_element  vc_custom_1564331612283 reshen">
+        <div class="wpb_wrapper">
+            <h3 class="tn-atom">Наш основной профиль работы — <strong>выполнение логистических задач любой
+                сложности</strong>. Мы выполняем <strong>перевозки стандартных и негабаритных грузов</strong>.</h3>
 
-<div class="vc_row wpb_row zolo_wpb_row vc_row-fluid section-front apress_row_class_173470291066963444304b4 vc_custom_1564061183240 vc_row-has-fill vc_row-no-padding vc_row-o-equal-height vc_row-flex">
-    <!-- Direction Block 1: Европа-Кыргызстан -->
-    <div class="kirghistan wpb_column vc_column_container vc_col-sm-6 apress_col_id_11961066656696344430ff6 hover_style_none">
-        <div class="layer vc_column-inner">
-            <div class="wpb_wrapper">
-                <!-- Image Box Start -->
-                <div id="zolo_imagebox_new_56197792366963444315bb" class="zolo_imagebox_new_wrapper new_imagebox_style4 noanimation" data-animation="No Animation" data-delay="500">
-                    <a title="Доставка грузов из Европы" target="_self" rel="">
-                        <div class="zolo_imagebox_new_box">
-                            <div class="img_thumbnail"><img src="https://asiatransit.kg/wp-content/uploads/2019/07/1-1.png" alt="Европа-Кыргызстан"></div>
-                            <div class="zolo_imagebox_new_content">
-                                <div class="zolo_imagebox_new_title_des">
-                                    <h3 class="entry-title zolo_imagebox_new_title" style="font-family: PT Sans; font-weight: 700; font-style: normal; font-size: 30px; color: #0a0a0a;">Европа-Кыргызстан</h3>
-                                    <span class="zolo_imagebox_description" style="font-size: 18px; color: #0a0a0a;">Автоперевозки, Перевозка сборных грузов, Ж/д перевозки, Крупногабаритные перевозки, Авиаперевозки.</span>
+        </div>
+    </div>
+    <div style=" "
+         class="vc_row wpb_row vc_inner vc_row-fluid section-front vc_custom_1563905688589 apress_inner_row_class_1476560274669634442508f">
+        <div class="wpb_column vc_column_container vc_col-sm-4 vc_col-xs-12">
+            <div class="vc_column-inner">
+                <div class="wpb_wrapper">
+                    <div class="aio-icon-component   front-top style_3">
+                        <div id="Info-box-wrap-7583" class="aio-icon-box top-icon" style="">
+                            <div class="aio-icon-top">
+                                <div class="ult-just-icon-wrapper  ">
+                                    <div class="align-icon" style="text-align:center;">
+                                        <div class="aio-icon-img " style="font-size:100px;display:inline-block;"
+                                             data-animation="fadeInDown" data-animation-delay="03">
+                                            <img class="img-icon" style="width: 15%" alt="null"
+                                                 src="https://asiatransit.kg/wp-content/uploads/2019/07/5_1.png"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                            <div class="aio-icon-header"><h3 class="aio-icon-title ult-responsive"
+                                                             data-ultimate-target='#Info-box-wrap-7583 .aio-icon-title'
+                                                             data-responsive-json-new='{"font-size":"desktop:20px;","line-height":"desktop:30px;"}'
+                                                             style="font-weight:bold;color:#333333;">Оборудование и
+                                техника</h3></div> <!-- header -->
+                            <div class="aio-icon-description ult-responsive"
+                                 data-ultimate-target='#Info-box-wrap-7583 .aio-icon-description'
+                                 data-responsive-json-new='{"font-size":"desktop:18px;","line-height":"desktop:20px;"}'
+                                 style="color:#333333;">Специализированные транспортные услуги по перевозке негабаритных
+                                и тяжеловесных грузов, требующих проектной координации и контроля.
+                            </div> <!-- description --></div> <!-- aio-icon-box --></div> <!-- aio-icon-component -->
                 </div>
-                <!-- Image Box End -->
             </div>
         </div>
-    </div>
-
-    <!-- Direction Block 2: Китай-Кыргызстан -->
-    <div class="kirghistan wpb_column vc_column_container vc_col-sm-6 apress_col_id_85004030266963444358ce hover_style_none">
-        <div class="layer vc_column-inner">
-            <div class="wpb_wrapper">
-                <!-- Image Box Start -->
-                <div id="zolo_imagebox_new_20562193296696344432f2e" class="zolo_imagebox_new_wrapper new_imagebox_style4 noanimation" data-animation="No Animation" data-delay="500">
-                    <a title="Доставка грузов из Китая" target="_self" rel="">
-                        <div class="zolo_imagebox_new_box">
-                            <div class="img_thumbnail"><img src="https://asiatransit.kg/wp-content/uploads/2019/07/3-3.png" alt="Китай-Кыргызстан"></div>
-                            <div class="zolo_imagebox_new_content">
-                                <div class="zolo_imagebox_new_title_des">
-                                    <h3 class="entry-title zolo_imagebox_new_title" style="font-family: PT Sans; font-weight: 700; font-style: normal; font-size: 30px; color: #0a0a0a;">Китай-Кыргызстан</h3>
-                                    <span class="zolo_imagebox_description" style="font-size: 18px; color: #0a0a0a;">Автоперевозки, Перевозка сборных грузов, Ж/д перевозки, Крупногабаритные перевозки, Авиаперевозки.</span>
+        <div class="wpb_column vc_column_container vc_col-sm-4 vc_col-xs-12">
+            <div class="vc_column-inner">
+                <div class="wpb_wrapper">
+                    <div class="aio-icon-component   front-top style_3">
+                        <div id="Info-box-wrap-2315" class="aio-icon-box top-icon" style="">
+                            <div class="aio-icon-top">
+                                <div class="ult-just-icon-wrapper  ">
+                                    <div class="align-icon" style="text-align:center;">
+                                        <div class="aio-icon-img " style="font-size:100px;display:inline-block;"
+                                             data-animation="fadeInDown" data-animation-delay="03">
+                                            <img class="img-icon" alt="null"
+                                                 src="https://asiatransit.kg/wp-content/uploads/2019/07/front3_1.png"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                            <div class="aio-icon-header"><h3 class="aio-icon-title ult-responsive"
+                                                             data-ultimate-target='#Info-box-wrap-2315 .aio-icon-title'
+                                                             data-responsive-json-new='{"font-size":"desktop:20px;","line-height":"desktop:30px;"}'
+                                                             style="font-weight:bold;color:#333333;">Стандартные
+                                промышленные грузы</h3></div> <!-- header -->
+                            <div class="aio-icon-description ult-responsive"
+                                 data-ultimate-target='#Info-box-wrap-2315 .aio-icon-description'
+                                 data-responsive-json-new='{"font-size":"desktop:18px;","line-height":"desktop:20px;"}'
+                                 style="color:#333333;">Оптимальные варианты доставки стандартных грузов в контейнерах и
+                                автотранспортом, специализация на мультимодальных перевозках.
+                            </div> <!-- description --></div> <!-- aio-icon-box --></div> <!-- aio-icon-component -->
                 </div>
-                <!-- Image Box End -->
             </div>
         </div>
-    </div>
-
-    <!-- Direction Block 3: Россия-Кыргызстан -->
-    <div class="kirghistan wpb_column vc_column_container vc_col-sm-6 apress_col_id_11961066656696344430ff6 hover_style_none">
-        <div class="layer vc_column-inner">
-            <div class="wpb_wrapper">
-                <!-- Image Box Start -->
-                <div id="zolo_imagebox_new_20915893066696344435ea0" class="zolo_imagebox_new_wrapper new_imagebox_style4 noanimation" data-animation="No Animation" data-delay="500">
-                    <a title="Доставка грузов из России" target="_self" rel="">
-                        <div class="zolo_imagebox_new_box">
-                            <div class="img_thumbnail"><img src="https://asiatransit.kg/wp-content/uploads/2019/07/2-2.png" alt="Россия-Кыргызстан"></div>
-                            <div class="zolo_imagebox_new_content">
-                                <div class="zolo_imagebox_new_title_des">
-                                    <h3 class="entry-title zolo_imagebox_new_title" style="font-family: PT Sans; font-weight: 700; font-style: normal; font-size: 30px; color: #0a0a0a;">Россия-Кыргызстан</h3>
-                                    <span class="zolo_imagebox_description" style="font-size: 18px; color: #0a0a0a;">Автоперевозки, Перевозка сборных грузов, Ж/д перевозки, Крупногабаритные перевозки, Авиаперевозки.</span>
+        <div class="wpb_column vc_column_container vc_col-sm-4 vc_col-xs-12">
+            <div class="vc_column-inner">
+                <div class="wpb_wrapper">
+                    <div class="aio-icon-component   front-top style_3">
+                        <div id="Info-box-wrap-5612" class="aio-icon-box top-icon" style="">
+                            <div class="aio-icon-top">
+                                <div class="ult-just-icon-wrapper  ">
+                                    <div class="align-icon" style="text-align:center;">
+                                        <div class="aio-icon-img " style="font-size:100px;display:inline-block;"
+                                             data-animation="fadeInDown" data-animation-delay="03">
+                                            <img class="img-icon" alt="null"
+                                                 src="https://asiatransit.kg/wp-content/uploads/2019/07/front-1.png"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                            <div class="aio-icon-header"><h3 class="aio-icon-title ult-responsive"
+                                                             data-ultimate-target='#Info-box-wrap-5612 .aio-icon-title'
+                                                             data-responsive-json-new='{"font-size":"desktop:20px;","line-height":"desktop:30px;"}'
+                                                             style="font-weight:bold;color:#333333;">Запчасти и
+                                комплектующие</h3></div> <!-- header -->
+                            <div class="aio-icon-description ult-responsive"
+                                 data-ultimate-target='#Info-box-wrap-5612 .aio-icon-description'
+                                 data-responsive-json-new='{"font-size":"desktop:18px;","line-height":"desktop:20px;"}'
+                                 style="color:#333333;">Доставка небольших и срочных партий груза по сложным
+                                направлениям.
+                            </div> <!-- description --></div> <!-- aio-icon-box --></div> <!-- aio-icon-component -->
                 </div>
-                <!-- Image Box End -->
             </div>
         </div>
     </div>
-
-    <!-- Direction Block 4: Казахстан - Узбекистан -->
-    <div class="kirghistan wpb_column vc_column_container vc_col-sm-6 apress_col_id_85004030266963444358ce hover_style_none">
-        <div class="layer vc_column-inner">
-            <div class="wpb_wrapper">
-                <!-- Image Box Start -->
-                <div id="zolo_imagebox_new_155810866366963444375f8" class="zolo_imagebox_new_wrapper new_imagebox_style4 noanimation" data-animation="No Animation" data-delay="500">
-                    <a title="Перевозки из Казахстана" target="_self" rel="">
-                        <div class="zolo_imagebox_new_box">
-                            <div class="img_thumbnail"><img src="https://asiatransit.kg/wp-content/uploads/2019/07/4-4.png" alt="Казахстан - Узбекистан"></div>
-                            <div class="zolo_imagebox_new_content">
-                                <div class="zolo_imagebox_new_title_des">
-                                    <h3 class="entry-title zolo_imagebox_new_title" style="font-family: PT Sans; font-weight: 700; font-style: normal; font-size: 30px; color: #0a0a0a;">Казахстан - Узбекистан</h3>
-                                    <span class="zolo_imagebox_description" style="font-size: 18px; color: #0a0a0a;">Автоперевозки, Перевозка сборных грузов, Ж/д перевозки, Крупногабаритные перевозки, Авиаперевозки.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- Image Box End -->
-            </div>
-        </div>
-    </div>
-</div>
-<!--Image Box End-->
-
-
-<div id="achievements" class="section section-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="section-heading">
-                    <h2 class="section-title">Наши достижения</h2>
-                    <div class="section-line"></div>
-                    <p class="section-subtitle">Наши клиенты доверяют нам и пользуются нашими услугами по перевозке грузов.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-sm-6 col-md-4">
-                <div class="achievement-item">
-                    <div class="achievement-icon">
-                        <img src="https://png.klev.club/uploads/posts/2024-03/png-klev-club-p-chernaya-zvezda-png-8.png" style="width: 20%" alt="Опыт и репутация">
-                    </div>
-                    <div class="achievement-content">
-                        <h3 class="achievement-title">Опыт и репутация</h3>
-                        <p class="achievement-description">Успешно работаем на рынке логистики с 2009 года. Нас рекомендуют ведущие компании Кыргызстана, Казахстана и России.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="achievement-item">
-                    <div class="achievement-icon">
-                        <img src="https://asiatransit.kg/wp-content/uploads/2019/07/gruzovik.png" style="width: 20%" alt="Собственный автопарк">
-                    </div>
-                    <div class="achievement-content">
-                        <h3 class="achievement-title">Собственный автопарк</h3>
-                        <p class="achievement-description">Собственный автотранспорт марки Volvo и MAN, а также рефрижераторные и тентовые полуприцепы.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="achievement-item">
-                    <div class="achievement-icon">
-                        <img src="https://asiatransit.kg/wp-content/uploads/2019/06/3.png" style="width: 20%" alt="Коллектив">
-                    </div>
-                    <div class="achievement-content">
-                        <h3 class="achievement-title">Коллектив</h3>
-                        <p class="achievement-description">Слаженная команда специалистов, способная обеспечить надежную поддержку для требовательных проектов.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-sm-6 col-md-4">
-                <div class="achievement-item">
-                    <div class="achievement-icon">
-                        <img src="https://asiatransit.kg/wp-content/uploads/2019/06/4.png" style="width: 20%" alt="Клиентоориентированность">
-                    </div>
-                    <div class="achievement-content">
-                        <h3 class="achievement-title">Клиентоориентированность</h3>
-                        <p class="achievement-description">Мы стремимся повышать конкурентоспособность клиентов за счет успешного выполнения логистических задач.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="achievement-item">
-                    <div class="achievement-icon">
-                        <img src="https://asiatransit.kg/wp-content/uploads/2019/06/5.png" style="width: 20%" alt="Проектные компетенции">
-                    </div>
-                    <div class="achievement-content">
-                        <h3 class="achievement-title">Проектные компетенции</h3>
-                        <p class="achievement-description">Нами накоплен обширный опыт по ведению крупных проектов и работе в труднодоступных регионах.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="achievement-item">
-                    <div class="achievement-icon">
-                        <img src="https://asiatransit.kg/wp-content/uploads/2019/06/6.png" style="width: 20%" alt="Устойчивое развитие">
-                    </div>
-                    <div class="achievement-content">
-                        <h3 class="achievement-title">Устойчивое развитие</h3>
-                        <p class="achievement-description">Мы привержены принципам экологичности, социальной ответственности и устойчивого развития.</p>
-                    </div>
-                </div>
+    <div id="ult-easy-separator-1138304933669634442a13a"
+         class="ult-easy-separator-wrapper ult-responsive ult-bottom-easy-separator ult-easy-separator-no-default ult-right-img"
+         style="transform: translate(0,70%)!important;-ms-transform: translate(0,70%)!important;-webkit-transform: translate(0,70%)!important;right:0%;transform: translate(0%,70%);-ms-transform: translate(0%,70%);-webkit-transform: translate(0%,70%);"
+         data-vc-row="wpb_row" data-ultimate-target='#ult-easy-separator-1138304933669634442a13a'
+         data-responsive-json-new='{"width":""}'>
+        <div class="ult-easy-separator-inner-wrapper">
+            <div class=" ult-animation ult-animate-viewport " style="opacity:0;" data-animate="fadeInUpBig"
+                 data-animation-delay="0" data-animation-duration="2" data-animation-iteration="1"
+                 data-opacity_start_effect=""><img class="ult-easy-separator-img" alt="null"
+                                                   src="https://asiatransit.kg/wp-content/uploads/2019/08/razdelit2.png"/>
             </div>
         </div>
     </div>
 </div>
+</div></div></div>
+<div id="b_2" data-fullscreen-anchor-id="b_2" data-row-text-color="dark" data-vc-full-width="true"
+     data-vc-full-width-init="false" style=" "
+     class="vc_row wpb_row zolo_wpb_row vc_row-fluid napravleniya-2 apress_row_class_674970112669634442c2be vc_custom_1563963528452">
+    <div class="wpb_column vc_column_container vc_col-sm-12 apress_col_id_653223772669634442d3e8 hover_style_none">
+        <div class="layer vc_column-inner ">
+            <div class="wpb_wrapper">
+                <div id="zolo_heading_element_54651925669634442dffc"
+                     class="zolo_heading_element heading_style1 animated hiding " data-animation="fadeInUp"
+                     data-delay="500" style=" text-align:left">
+                    <div class="zolo_heading_element_text">
+                        <h2 class="zolo-title">
+                            <span class="title_text"
+                                  style="display: block; font-family: PT Sans; font-weight: 700; font-style: normal; font-size: 72px; line-height: 50px; text-align: center;">Направления</span>
+                        </h2>
+                        <div class="zolo-heading-delimiter">
+                            <span class="delimiter_style_line"></span>
+                        </div>
+                        <h4 class="zolo-sub-title">
+                            <span class="zolo-sub-title-text" style="display: block; text-align: center;">Основными направлениями работы «Альбатрос Транс» являются перевозки грузов</span>
+                        </h4>
+                    </div>
+
+                    <div class="container-1">
+                        <!-- Direction Block 1: Европа-Кыргызстан -->
+                        <div class="direction-block-1">
+                            <img src="https://asiatransit.kg/wp-content/uploads/2019/07/1-1.png"
+                                 alt="Европа-Кыргызстан">
+                            <h3>Европа-Кыргызстан</h3>
+                            <span>Автоперевозки, Перевозка сборных грузов, Ж/д перевозки, Крупногабаритные перевозки, Авиаперевозки.</span>
+                        </div>
+                        <!-- Direction Block 2: Россия-Кыргызстан -->
+                        <div class="direction-block-1">
+                            <img src="https://asiatransit.kg/wp-content/uploads/2019/07/2-2.png"
+                                 alt="Россия-Кыргызстан">
+                            <h3>Россия-Кыргызстан</h3>
+                            <span>Автоперевозки, Перевозка сборных грузов, Ж/д перевозки, Крупногабаритные перевозки, Авиаперевозки.</span>
+                        </div>
+                        <!-- Direction Block 3: Китай-Кыргызстан -->
+                        <div class="direction-block-1">
+                            <img src="https://asiatransit.kg/wp-content/uploads/2019/07/3-3.png" alt="Китай-Кыргызстан">
+                            <h3>Китай-Кыргызстан</h3>
+                            <span>Автоперевозки, Перевозка сборных грузов, Ж/д перевозки, Крупногабаритные перевозки, Авиаперевозки.</span>
+                        </div>
+                        <!-- Direction Block 4: Казахстан - Узбекистан -->
+                        <div class="direction-block-1">
+                            <img src="https://asiatransit.kg/wp-content/uploads/2019/07/4-4.png"
+                                 alt="Казахстан - Узбекистан">
+                            <h3>Казахстан - Узбекистан</h3>
+                            <span>Автоперевозки, Перевозка сборных грузов, Ж/д перевозки, Крупногабаритные перевозки, Авиаперевозки.</span>
+                        </div>
+                    </div>
+                    <!--Image Box End-->
 
 
+                    <div id="achievements" class="section section-light">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <div class="section-heading">
+                                        <h2 class="section-title">Наши достижения</h2>
+                                        <div class="section-line"></div>
+                                        <p class="section-subtitle">Наши клиенты доверяют нам и пользуются нашими
+                                            услугами по перевозке грузов.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="achievement-item">
+                                        <div class="achievement-icon">
+                                            <img src="https://png.klev.club/uploads/posts/2024-03/png-klev-club-p-chernaya-zvezda-png-8.png"
+                                                 style="width: 20%" alt="Опыт и репутация">
+                                        </div>
+                                        <div class="achievement-content">
+                                            <h3 class="achievement-title">Опыт и репутация</h3>
+                                            <p class="achievement-description">Успешно работаем на рынке логистики уже
+                                                долгое время. Нас рекомендуют ведущие компании Кыргызстана, Казахстана и
+                                                России.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="achievement-item">
+                                        <div class="achievement-icon">
+                                            <img src="https://asiatransit.kg/wp-content/uploads/2019/07/gruzovik.png"
+                                                 style="width: 20%" alt="Собственный автопарк">
+                                        </div>
+                                        <div class="achievement-content">
+                                            <h3 class="achievement-title">Собственный автопарк</h3>
+                                            <p class="achievement-description">Собственный автотранспорт марки Volvo и
+                                                MAN, а также рефрижераторные и тентовые полуприцепы.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="achievement-item">
+                                        <div class="achievement-icon">
+                                            <img src="https://asiatransit.kg/wp-content/uploads/2019/06/3.png"
+                                                 style="width: 20%" alt="Коллектив">
+                                        </div>
+                                        <div class="achievement-content">
+                                            <h3 class="achievement-title">Коллектив</h3>
+                                            <p class="achievement-description">Слаженная команда специалистов, способная
+                                                обеспечить надежную поддержку для требовательных проектов.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="achievement-item">
+                                        <div class="achievement-icon">
+                                            <img src="https://asiatransit.kg/wp-content/uploads/2019/06/4.png"
+                                                 style="width: 20%" alt="Клиентоориентированность">
+                                        </div>
+                                        <div class="achievement-content">
+                                            <h3 class="achievement-title">Клиентоориентированность</h3>
+                                            <p class="achievement-description">Мы стремимся повышать
+                                                конкурентоспособность клиентов за счет успешного выполнения
+                                                логистических задач.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="achievement-item">
+                                        <div class="achievement-icon">
+                                            <img src="https://asiatransit.kg/wp-content/uploads/2019/06/5.png"
+                                                 style="width: 20%" alt="Проектные компетенции">
+                                        </div>
+                                        <div class="achievement-content">
+                                            <h3 class="achievement-title">Проектные компетенции</h3>
+                                            <p class="achievement-description">Нами накоплен обширный опыт по ведению
+                                                крупных проектов и работе в труднодоступных регионах.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="achievement-item">
+                                        <div class="achievement-icon">
+                                            <img src="https://asiatransit.kg/wp-content/uploads/2019/06/6.png"
+                                                 style="width: 20%" alt="Устойчивое развитие">
+                                        </div>
+                                        <div class="achievement-content">
+                                            <h3 class="achievement-title">Устойчивое развитие</h3>
+                                            <p class="achievement-description">Мы привержены принципам экологичности,
+                                                социальной ответственности и устойчивого развития.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Наши услуги</h1>
-    <div class="row">
-        {% for service in services %}
-        <div class="col-md-4 col-sm-6 mb-4">
-            <div class="card h-100">
-                <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ service.title }}</h5>
-                    <p class="card-text">{{ service.description }}</p>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
-<footer class="footer mt-auto py-3">
-    <div class="container text-center">
-        <span>© 2024 Logistic Site. Все права защищены.</span>
-        <div class="footer-links mt-3">
-            <a href="{% url 'services' %}" class="btn btn-outline-light btn-sm">Сервисы</a>
-            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-sm">Контакты</a>
-            <a href="{% url 'faq' %}" class="btn btn-outline-light btn-sm">FAQ</a>
-            <a href="{% url 'news' %}" class="btn btn-outline-light btn-sm">Новости</a>
-        </div>
-        <div class="footer-icons mt-3">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"
-                     width="30">
-            </a>
 
-        </div>
-    </div>
-</footer>
+                    <div class="container mt-5">
+                        <h1 class="text-center mb-4">Наши услуги</h1>
+                        <div class="row">
+                            {% for service in services %}
+                            <div class="col-md-4 col-sm-6 mb-4">
+                                <div class="card h-100">
+                                    <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.title }}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ service.title }}</h5>
+                                        <p class="card-text">{{ service.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <footer class="footer mt-auto py-3">
+                        <div class="container text-center">
+                            <span>© 2024 Logistic Site. Все права защищены.</span>
+                            <div class="footer-links mt-3">
+                                <a href="{% url 'services' %}" class="btn btn-outline-light btn-sm">Сервисы</a>
+                                <a href="{% url 'contact' %}" class="btn btn-outline-light btn-sm">Контакты</a>
+                                <a href="{% url 'faq' %}" class="btn btn-outline-light btn-sm">FAQ</a>
+                                <a href="{% url 'news' %}" class="btn btn-outline-light btn-sm">Новости</a>
+                            </div>
+                            <div class="footer-icons mt-3">
+                                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                                         alt="Instagram"
+                                         width="30">
+                                </a>
 
-<!-- Подключение Bootstrap JS и Popper.js -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+                            </div>
+                        </div>
+                    </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-<script>
-    window.addEventListener('scroll', function () {
-        var navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const navbarToggler = document.querySelector('.navbar-toggler');
-        const navbar = document.querySelector('.navbar');
+                    <!-- Подключение Bootstrap JS и Popper.js -->
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
-        navbarToggler.addEventListener('click', function () {
-            if (navbar.classList.contains('toggled')) {
-                navbar.classList.remove('toggled');
-            } else {
-                navbar.classList.add('toggled');
-            }
-        });
-    });
-</script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                            crossorigin="anonymous"></script>
+                    <script>
+                        window.addEventListener('scroll', function () {
+                            var navbar = document.querySelector('.navbar');
+                            if (window.scrollY > 50) {
+                                navbar.classList.add('scrolled');
+                            } else {
+                                navbar.classList.remove('scrolled');
+                            }
+                        });
+                    </script>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const navbarToggler = document.querySelector('.navbar-toggler');
+                            const navbar = document.querySelector('.navbar');
+
+                            navbarToggler.addEventListener('click', function () {
+                                if (navbar.classList.contains('toggled')) {
+                                    navbar.classList.remove('toggled');
+                                } else {
+                                    navbar.classList.add('toggled');
+                                }
+                            });
+                        });
+                    </script>
 </body>
 </html>

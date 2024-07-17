@@ -7,8 +7,6 @@
     <title>О нас - Logistics Company</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <title>Новости - Logistics Company</title>
     <style>
         #scrollTopBtn {
             display: none; /* По умолчанию скрываем кнопку */
@@ -28,9 +26,19 @@
         .navbar.toggled {
             background-color: white !important;
         }
+        .navbar-nav .nav-link {
+    font-size: 1.2rem; /* Увеличенный размер текста */
+    padding: 10px 20px; /* Увеличенные отступы */
+    border-radius: 25px; /* Закругленные края */
+    font-weight: bold; /* Жирный текст */
+    text-decoration: underline; /* Подчеркнутый текст */
+}
 
+.navbar-nav .nav-item {
+    margin: 0 10px; /* Расстояние между кнопками */
+}
         .header {
-            background: url('/static/images/фон1.png') no-repeat center top;
+            background: url('{% static "images/фон1.png" %}') no-repeat center top;
             background-size: cover;
             height: 100vh;
             color: white;
@@ -42,82 +50,110 @@
         }
         .header-content {
             position: relative;
-            z-index: 1001; /* Выше чем навбар */
+            z-index: 1001;
+            background-color: rgba(52, 58, 64, 0.7);
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .header h1 {
-            font-size: 3rem;
+        .direction-block {
+            background-color: #f0f0f0;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
         }
-        .container {
-            padding: 2rem;
+        .direction-block h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin: 20px 0 10px;
+        }
+        .direction-block p {
+            font-size: 16px;
+            color: #5b5b5b;
         }
         .card {
+            background: #fff;
+            border: 1px solid #e4e4e4;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+            cursor: pointer;
         }
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
         }
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
+        .card-front, .card-back {
+            padding: 20px;
+            text-align: center;
+        }
+        .icon {
+            font-size: 35px;
+            color: #fecc00;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            color: #5b5b5b;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .card p {
+            color: #5b5b5b;
         }
         .footer {
             background-color: #343a40;
             color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            text-align: center;
+            padding: 20px 0;
         }
-
         .footer a {
             color: white;
             text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2rem;
         }
-
         .footer a:hover {
             text-decoration: underline;
         }
-
-        .footer-icons {
-            margin-top: 10px;
-        }
-
         .footer-icons a {
             margin: 0 10px;
             color: white;
             font-size: 1.5rem;
         }
-
     </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
-        <img src="{% static 'images/лого.jpg' %}" style="width: 7%">
-        <a class="navbar-brand mx-auto" href="{% url 'index' %}"><strong>Logistic Site</strong></a>
+        <img src="{% static 'images/лого.png' %}" style="width: 7%">
+        <a class="navbar-brand mx-auto" href="{% url 'index' %}"><strong>Альбатрос Транс</strong></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
                        href="{% url 'services' %}">Сервисы</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
                        href="{% url 'contact' %}">Контакты</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'faq' %}">FAQ</a>
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
+                       href="{% url 'faq' %}">FAQ</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'news' %}">Новости</a>
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
+                       href="{% url 'news' %}">Новости</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'about' %}">О
-                        нас</a>
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
+                       href="{% url 'about' %}">О нас</a>
                 </li>
             </ul>
         </div>
@@ -125,261 +161,142 @@
 </nav>
 <div class="header">
     <div class="header-content">
-        <h1>Добро пожаловать в Logistics Company</h1>
-        <p>Logistics Company Logo</p>
+        <h1>О нашей компании</h1>
     </div>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h1>О нас</h1>
-            <p>Информация о компании, миссия и ценности.</p>
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h2>О нас</h2>
+            <p>Альбатрос Транс — это логистическая компания, предоставляющая полный спектр услуг по перевозке грузов как внутри страны, так и за ее пределами. Мы стремимся к тому, чтобы наши клиенты получали высококачественное обслуживание, которое соответствует самым высоким стандартам.</p>
+            <p><strong>Наша миссия</strong><br>
+                Мы стремимся к совершенству в предоставлении логистических услуг, обеспечивая надежные и эффективные решения для бизнеса наших клиентов. Наша цель — стать надежным партнером, помогая вам достигать успеха через бесперебойные и своевременные доставки.</p>
+            <p><strong>Наши ценности</strong><br>
+                <strong>Надежность:</strong> Мы гарантируем, что ваш груз будет доставлен в целости и сохранности, точно в срок.<br>
+                <strong>Клиентоориентированность:</strong> Мы понимаем, что каждый клиент уникален, и предлагаем индивидуальные решения, учитывая все ваши потребности и пожелания.<br>
+                <strong>Инновации:</strong> Мы постоянно совершенствуем наши процессы и внедряем новые технологии, чтобы обеспечивать лучший сервис на рынке.<br>
+                <strong>Прозрачность:</strong> Мы предоставляем полную информацию о процессе доставки на каждом этапе, чтобы вы всегда были в курсе местонахождения вашего груза.</p>
         </div>
-        <div class="col-md-6">
-            <img src="images/about_us.jpg" class="img-fluid" alt="О нас">
-        </div>
     </div>
 </div>
-</div></div></div></div><h3 class="ult-responsive flipbox_heading"
-                            data-ultimate-target='#flip-box-wrap-9040 .ult-responsive.flipbox_heading'
-                            data-responsive-json-new='{"font-size":"mobile:14px;","line-height":""}'
-                            style="color:#5b5b5b; font-weight:bold;">БЫСТРО И ЛЕГКО</h3>
-<div class="ifb-flip-box-section-content ult-responsive"
-     data-ultimate-target='#flip-box-wrap-9040 .ifb-flip-box-section-content.ult-responsive'
-     data-responsive-json-new='{"font-size":"mobile:10px;","line-height":"mobile:15px;"}' style="color:#5b5b5b;"><p>У
-    нас индивидуальный подход к каждому клиенту.</p></div>
-</div></div><!-- END .front -->
-<div class="ifb-face ifb-back"
-     style="color:#5b5b5b;background:#ffffff; border-style: solid;border-width: 1px; border-color:#eaeaea; ">
-    <div class="ifb-flip-box-section "><h3 class="ult-responsive flipbox_heading"
-                                           data-ultimate-target='#flip-box-wrap-9040 .ult-responsive.flipbox_heading'
-                                           data-responsive-json-new='{"font-size":"mobile:14px;","line-height":""}'
-                                           style="color:#5b5b5b; font-weight:bold;">Отлаженнная работа</h3>
-        <div class="ifb-desc-back">
-            <div class="ifb-flip-box-section-content ult-responsive"
-                 data-ultimate-target='#flip-box-wrap-9040 .ifb-flip-box-section-content.ult-responsive'
-                 data-responsive-json-new='{"font-size":"mobile:10px;","line-height":"mobile:15px;"}'
-                 style="color:#5b5b5b;"><p>Мы уделяем много времени и усилий для того, чтобы Вам было удобно
-                пользоваться нашими услугами.</p></div>
-        </div>
-        <div class="flip_link"></div>
-    </div>
-</div><!-- END .back --></div> <!-- ifb-flip-box --></div> <!-- flip-box --></div>
-<!-- End icon block --></div></div></div>
-<div class="about-col wpb_column vc_column_container vc_col-sm-4 vc_col-xs-12 apress_col_id_5780319736696561c4e4ac hover_style_none">
-    <div class="layer vc_column-inner ">
-        <div class="wpb_wrapper">
-            <div class="flip-box-wrap" style="">
-                <div class="flip-box ifb-jq-height  horizontal_flip_left flip-ifb-jq-height" data-animation=""
-                     data-animation-delay="03" style="">
-                    <div class="ifb-flip-box" id="flip-box-wrap-4235">
-                        <div class="ifb-face ifb-front "
-                             style="color:#5b5b5b;background:#ffffff; border-style: solid;border-width: 1px; border-color:#e4e4e4; ">
-                            <div class="ifb-flip-box-section ">
-                                <div class="flip-box-icon">
-                                    <div class="ult-just-icon-wrapper  ">
-                                        <div class="align-icon" style="text-align:center;">
-                                            <div class="aio-icon none "
-                                                 style="color:#fecc00;font-size:35px;display:inline-block;">
-                                                <i class="Defaults-stack-overflow"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3 class="ult-responsive flipbox_heading"
-                                    data-ultimate-target='#flip-box-wrap-4235 .ult-responsive.flipbox_heading'
-                                    data-responsive-json-new='{"font-size":"mobile:14px;","line-height":""}'
-                                    style="color:#5b5b5b; font-weight:bold;">ВСЕ НАПРАВЛЕНИЯ</h3>
-                                <div class="ifb-flip-box-section-content ult-responsive"
-                                     data-ultimate-target='#flip-box-wrap-4235 .ifb-flip-box-section-content.ult-responsive'
-                                     data-responsive-json-new='{"font-size":"mobile:10px;","line-height":"mobile:15px;"}'
-                                     style="color:#5b5b5b;"><p>Отправка грузов по всем направлениям.</p></div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="card">
+                        <div class="card-front">
+                            <div class="icon">
+                                <i class="bi bi-map-o"></i>
                             </div>
-                        </div><!-- END .front -->
-                        <div class="ifb-face ifb-back"
-                             style="color:#5b5b5b;background:#ffffff; border-style: solid;border-width: 1px; border-color:#eaeaea; ">
-                            <div class="ifb-flip-box-section "><h3 class="ult-responsive flipbox_heading"
-                                                                   data-ultimate-target='#flip-box-wrap-4235 .ult-responsive.flipbox_heading'
-                                                                   data-responsive-json-new='{"font-size":"mobile:14px;","line-height":""}'
-                                                                   style="color:#5b5b5b; font-weight:bold;">Направления
-                                грузоперевозок</h3>
-                                <div class="ifb-desc-back">
-                                    <div class="ifb-flip-box-section-content ult-responsive"
-                                         data-ultimate-target='#flip-box-wrap-4235 .ifb-flip-box-section-content.ult-responsive'
-                                         data-responsive-json-new='{"font-size":"mobile:10px;","line-height":"mobile:15px;"}'
-                                         style="color:#5b5b5b;"><p>С нами Вы можете отправлять грузы в любую точку мира:
-                                        из Китая, из России, стран СНГ и Европы.</p></div>
-                                </div>
-                                <div class="flip_link"><a
-                                        href="https://asiatransit.kg/%d0%bd%d0%b0%d0%bf%d1%80%d0%b0%d0%b2%d0%bb%d0%b5%d0%bd%d0%b8%d1%8f/"
-                                        title="Направления" style="background:#fecc00; color:#ffffff;">Узнать больше</a>
-                                </div>
+                            <h3>БЫСТРО И ЛЕГКО</h3>
+                            <p>У нас индивидуальный подход к каждому клиенту.</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Отлаженная работа</h3>
+                            <p>Мы уделяем много времени и усилий для того, чтобы Вам было удобно пользоваться нашими
+                                услугами.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <div class="card">
+                        <div class="card-front">
+                            <div class="icon">
+                                <i class="bi bi-stack-overflow"></i>
                             </div>
-                        </div><!-- END .back --></div> <!-- ifb-flip-box --></div> <!-- flip-box --></div>
-            <!-- End icon block --></div>
-    </div>
-</div>
-<div class="about-col wpb_column vc_column_container vc_col-sm-4 vc_col-xs-12 apress_col_id_12089943706696561c510da hover_style_none">
-    <div class="layer vc_column-inner ">
-        <div class="wpb_wrapper">
-            <div class="flip-box-wrap" style="">
-                <div class="flip-box ifb-jq-height  horizontal_flip_left flip-ifb-jq-height" data-animation=""
-                     data-animation-delay="03" style="">
-                    <div class="ifb-flip-box" id="flip-box-wrap-9990">
-                        <div class="ifb-face ifb-front "
-                             style="color:#5b5b5b;background:#ffffff; border-style: solid;border-width: 1px; border-color:#e4e4e4; ">
-                            <div class="ifb-flip-box-section ">
-                                <div class="flip-box-icon">
-                                    <div class="ult-just-icon-wrapper  ">
-                                        <div class="align-icon" style="text-align:center;">
-                                            <div class="aio-icon none "
-                                                 style="color:#fecc00;font-size:35px;display:inline-block;">
-                                                <i class="Defaults-thumbs-up"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3 class="ult-responsive flipbox_heading"
-                                    data-ultimate-target='#flip-box-wrap-9990 .ult-responsive.flipbox_heading'
-                                    data-responsive-json-new='{"font-size":"mobile:14px;","line-height":""}'
-                                    style="color:#5b5b5b; font-weight:bold;">ВСЕ ВИДЫ ТРАНСПОРТА</h3>
-                                <div class="ifb-flip-box-section-content ult-responsive"
-                                     data-ultimate-target='#flip-box-wrap-9990 .ifb-flip-box-section-content.ult-responsive'
-                                     data-responsive-json-new='{"font-size":"mobile:10px;","line-height":"mobile:15px;"}'
-                                     style="color:#5b5b5b;"><p>Отправим Ваш груз по дороге, морем или по воздуху.</p>
-                                </div>
+                            <h3>ВСЕ НАПРАВЛЕНИЯ</h3>
+                            <p>Отправка грузов по всем направлениям.</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Направления грузоперевозок</h3>
+                            <p>С нами Вы можете отправлять грузы в любую точку мира: из Китая, из России, стран СНГ и
+                                Европы.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <div class="card">
+                        <div class="card-front">
+                            <div class="icon">
+                                <i class="bi bi-thumbs-up"></i>
                             </div>
-                        </div><!-- END .front -->
-                        <div class="ifb-face ifb-back"
-                             style="color:#5b5b5b;background:#ffffff; border-style: solid;border-width: 1px; border-color:#eaeaea; ">
-                            <div class="ifb-flip-box-section "><h3 class="ult-responsive flipbox_heading"
-                                                                   data-ultimate-target='#flip-box-wrap-9990 .ult-responsive.flipbox_heading'
-                                                                   data-responsive-json-new='{"font-size":"mobile:14px;","line-height":""}'
-                                                                   style="color:#5b5b5b; font-weight:bold;">
-                                Транспорт</h3>
-                                <div class="ifb-desc-back">
-                                    <div class="ifb-flip-box-section-content ult-responsive"
-                                         data-ultimate-target='#flip-box-wrap-9990 .ifb-flip-box-section-content.ult-responsive'
-                                         data-responsive-json-new='{"font-size":"mobile:10px;","line-height":"mobile:15px;"}'
-                                         style="color:#5b5b5b;"><p>Международные грузоперевозки автотранспортом, ж/д и
-                                        авиа, а также морским грузовым транспортом.</p></div>
-                                </div>
-                                <div class="flip_link"><a
-                                        href="http://asiatransit.kg/%d0%b3%d1%80%d1%83%d0%b7%d0%be%d0%bf%d0%b5%d1%80%d0%b5%d0%b2%d0%be%d0%b7%d0%ba%d0%b8/"
-                                        title="Услуги" style="background:#fecc00; color:#ffffff;">Наши услуги</a></div>
-                            </div>
-                        </div><!-- END .back --></div> <!-- ifb-flip-box --></div> <!-- flip-box --></div>
-            <!-- End icon block --></div>
-    </div>
-</div>
-</div>
-<div data-row-text-color="dark" data-vc-full-width="true" data-vc-full-width-init="false" style=" "
-     class="vc_row wpb_row zolo_wpb_row vc_row-fluid apress_row_class_2527304316696561c53e80 vc_custom_1561568215158">
-    <div class="wpb_animate_when_almost_visible wpb_fadeInUp fadeInUp wpb_column vc_column_container vc_col-sm-12 apress_col_id_317670066696561c551cc hover_style_none">
-        <div class="layer vc_column-inner vc_custom_1561497537909">
-            <div class="wpb_wrapper">
-                <div id="ultimate-heading-28996696561c55742"
-                     class="uvc-heading ult-adjust-bottom-margin ultimate-heading-28996696561c55742 uvc-1673 "
-                     data-hspacer="no_spacer" data-halign="center" style="text-align:center">
-                    <div class="uvc-heading-spacer no_spacer" style="top"></div>
-                    <div class="uvc-main-heading ult-responsive"
-                         data-ultimate-target='.uvc-heading.ultimate-heading-28996696561c55742 h2'
-                         data-responsive-json-new='{"font-size":"desktop:40px;tablet:25px;tablet_portrait:20px;mobile_landscape:20px;mobile:20px;","line-height":"desktop:60px;tablet:40px;tablet_portrait:30px;mobile_landscape:30px;mobile:30px;"}'>
-                        <h2 style="font-weight:normal;color:#ffffff;margin-bottom:20px;">Цель компании ASIA TRANSIT
-                            заключается в том, чтобы обслуживание клиентов было не только хорошим, но и лучшим.</h2>
+                            <h3>ВСЕ ВИДЫ ТРАНСПОРТА</h3>
+                            <p>Отправим Ваш груз по дороге, морем или по воздуху.</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Транспорт</h3>
+                            <p>Международные грузоперевозки автотранспортом, ж/д и авиа, а также морским грузовым
+                                транспортом.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="vc_row-full-width vc_clearfix"></div><!-- Row Backgrounds -->
-<div class="upb_bg_img" data-ultimate-bg="url(https://asiatransit.kg/wp-content/uploads/2019/06/about-3.jpg)"
-     data-image-id="id^1956|url^http://asiatransit.kg/wp-content/uploads/2019/06/about-3.jpg|caption^null|alt^null|title^about-3|description^null"
-     data-ultimate-bg-style="vcpb-vz-jquery" data-bg-img-repeat="no-repeat" data-bg-img-size="cover"
-     data-bg-img-position="" data-parallx_sense="30" data-bg-override="ex-full" data-bg_img_attach="fixed"
-     data-upb-overlay-color="rgba(30,29,29,0.56)" data-upb-bg-animation="" data-fadeout=""
-     data-bg-animation="left-animation" data-bg-animation-type="h" data-animation-repeat="repeat"
-     data-fadeout-percentage="30" data-parallax-content="parallax_content_value" data-parallax-content-sense="30"
-     data-row-effect-mobile-disable="true" data-img-parallax-mobile-disable="true" data-rtl="false"
-     data-custom-vc-row="" data-vc="6.0.3" data-is_old_vc="" data-theme-support="" data-overlay="true"
-     data-overlay-color="rgba(30,29,29,0.56)" data-overlay-pattern="" data-overlay-pattern-opacity="0.8"
-     data-overlay-pattern-size="" data-overlay-pattern-attachment="scroll"></div>
-<div data-row-text-color="dark" style=" "
-     class="vc_row wpb_row zolo_wpb_row vc_row-fluid apress_row_class_4203960906696561c6c5f5 vc_custom_1500711982147">
-    <div class="frontwith100 wpb_column vc_column_container vc_col-sm-6 apress_col_id_15026614036696561c6d919 hover_style_none">
-        <div class="layer vc_column-inner ">
-            <div class="wpb_wrapper">
-                <div id="zolo_heading_element_4335114816696561c6e5c8"
-                     class="zolo_heading_element heading_style2 animated hiding " data-animation="fadeInDown"
-                     data-delay="500" style=" text-align:left">
-                    <div class="zolo_heading_element_text"><h1 class="zolo-title "><span class="title_text"
-                                                                                         style="font-family:PT Sans; font-weight:700; font-style:normal; font-size: 30px; line-height: 40px; letter-spacing: 1px; ">О НАШЕЙ ТРАНСПОРТНОЙ КОМПАНИИ</span>
-                    </h1></div>
-                </div>
-                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_slideInUp slideInUp aboutus">
-                    <div class="wpb_wrapper">
-                        <p>Компания «AsiaTransit Logistic» &#8212; современная компания логистических услуг
-                            представляющая сервис по доставке грузов по всем направлениям стран СНГ, Китая, Европы и
-                            внутри ЕАЭС.</p>
 
-                    </div>
-                </div>
 
-                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_slideInUp slideInUp aboutus">
-                    <div class="wpb_wrapper">
-                        <p>Деятельность в сфере международных перевозок компания осуществляет уже 10 лет, успешно
-                            продолжая доказывать всем своим клиентам оперативность, качество и надежность предоставления
-                            услуг. Наша компания имеет возможность предложить комплексные решения<br/>
-                            по доставке грузов и обеспечить качественное исполнение взятых на себя обязательств.</p>
+<!-- ГЕОГРАФИЯ ГРУЗОПЕРЕВОЗОК -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h1 class="text-center mb-4">О НАШЕЙ ЛОГИСТИЧЕСКОЙ КОМПАНИИ</h1>
+            <div class="aboutus">
+                <p class="text-center">Компания «Альбатрос Транс» — современная компания логистических услуг,
+                    представляющая сервис по доставке грузов по всем направлениям стран СНГ, Китая, Европы и внутри
+                    ЕАЭС.</p>
+                <p class="text-center">Деятельность в сфере международных перевозок компания осуществляет уже 10 лет,
+                    успешно продолжая доказывать всем своим клиентам оперативность, качество и надежность предоставления
+                    услуг. Наша компания имеет возможность предложить комплексные решения по доставке грузов и
+                    обеспечить качественное исполнение взятых на себя обязательств.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-                    </div>
-                </div>
-                </div></div></div></div></div><div data-row-text-color="dark" style=" " class="vc_row wpb_row zolo_wpb_row vc_row-fluid apress_row_class_11612336976696561c88922 vc_custom_1561568304624"><div class="wpb_column vc_column_container vc_col-sm-12 apress_col_id_11918944266696561c89232 hover_style_none"><div class="layer vc_column-inner "  ><div class="wpb_wrapper">
-	<div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_rollIn rollIn vc_custom_1562320068937" >
-		<div class="wpb_wrapper">
-			<h2 style="text-align: center;">ГЕОГРАФИЯ ГРУЗОПЕРЕВОЗОК</h2>
+<!-- ГЕОГРАФИЯ ГРУЗОПЕРЕВОЗОК -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">ГЕОГРАФИЯ ГРУЗОПЕРЕВОЗОК</h2>
+            <div class="text-center">
+                <img src="https://asiatransit.kg/wp-content/uploads/2019/07/geogr.jpg" class="img-fluid"
+                     alt="География грузоперевозок">
+            </div>
+        </div>
+    </div>
+</div>
 
-		</div>
-	</div>
-</div></div></div></div><div data-row-text-color="dark" style=" " class="vc_row wpb_row zolo_wpb_row vc_row-fluid apress_row_class_784215236696561c8a8ad"><div class="wpb_column vc_column_container vc_col-sm-12 apress_col_id_3989616556696561c8b146 hover_style_none"><div class="layer vc_column-inner "  ><div class="wpb_wrapper">
-	<div  class="wpb_single_image wpb_content_element vc_align_center  wpb_animate_when_almost_visible wpb_fadeIn fadeIn">
 
-		<figure class="wpb_wrapper vc_figure">
-			<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="1000" height="479" src="https://asiatransit.kg/wp-content/uploads/2019/07/geogr.jpg" class="vc_single_image-img attachment-full" alt="" srcset="https://asiatransit.kg/wp-content/uploads/2019/07/geogr.jpg 1000w, https://asiatransit.kg/wp-content/uploads/2019/07/geogr-300x144.jpg 300w, https://asiatransit.kg/wp-content/uploads/2019/07/geogr-768x368.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" /></div>
-		</figure>
-	</div>
-</div></div></div></div><div data-row-text-color="dark" data-vc-full-width="true" data-vc-full-width-init="false" style=" " class="vc_row wpb_row zolo_wpb_row vc_row-fluid apress_row_class_13909255626696561c94baa vc_custom_1500712079219 vc_row-has-fill"><div class="wpb_column vc_column_container vc_col-sm-12 apress_col_id_9083680766696561c95e47 hover_style_none"><div class="layer vc_column-inner "  ><div class="wpb_wrapper">
-	<div class="wpb_text_column wpb_content_element  vc_custom_1561500139840" >
-		<div class="wpb_wrapper">
+<footer class="footer mt-auto py-3">
+    <div class="container text-center">
+        <span>© 2024 Logistic Site. Все права защищены.</span>
+        <div class="footer-links mt-3">
+            <a href="{% url 'services' %}" class="btn btn-outline-light btn-sm">Сервисы</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-sm">Контакты</a>
+            <a href="{% url 'faq' %}" class="btn btn-outline-light btn-sm">FAQ</a>
+            <a href="{% url 'news' %}" class="btn btn-outline-light btn-sm">Новости</a>
+        </div>
+        <div class="footer-icons mt-3">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                     alt="Instagram"
+                     width="30">
+            </a>
 
-                <footer class="footer mt-auto py-3">
-                    <div class="container text-center">
-                        <span>© 2024 Logistic Site. Все права защищены.</span>
-                        <div class="footer-links mt-3">
-                            <a href="{% url 'services' %}" class="btn btn-outline-light btn-sm">Сервисы</a>
-                            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-sm">Контакты</a>
-                            <a href="{% url 'faq' %}" class="btn btn-outline-light btn-sm">FAQ</a>
-                            <a href="{% url 'news' %}" class="btn btn-outline-light btn-sm">Новости</a>
-                        </div>
-                        <div class="footer-icons mt-3">
-                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                                     alt="Instagram"
-                                     width="30">
-                            </a>
+        </div>
+    </div>
+</footer>
 
-                        </div>
-                    </div>
-                </footer>
+<!-- Подключение Bootstrap JS и Popper.js -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
-                <!-- Подключение Bootstrap JS и Popper.js -->
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                        crossorigin="anonymous"></script>
-                <script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script>
     window.addEventListener('scroll', function () {
         var navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
@@ -388,9 +305,8 @@
             navbar.classList.remove('scrolled');
         }
     });
-
-                </script>
-                <script>
+</script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         const navbarToggler = document.querySelector('.navbar-toggler');
         const navbar = document.querySelector('.navbar');
@@ -403,7 +319,6 @@
             }
         });
     });
-
-                </script>
+</script>
 </body>
 </html>

@@ -26,9 +26,20 @@
         .navbar.toggled {
             background-color: white !important;
         }
+        .navbar-nav .nav-link {
+            font-size: 1.2rem; /* Увеличенный размер текста */
+            padding: 10px 20px; /* Увеличенные отступы */
+            border-radius: 25px; /* Закругленные края */
+            font-weight: bold; /* Жирный текст */
+            text-decoration: underline; /* Подчеркнутый текст */
+        }
+
+        .navbar-nav .nav-item {
+            margin: 0 10px; /* Расстояние между кнопками */
+        }
 
         .header {
-            background: url('/static/images/фон2.jpg') no-repeat center top;
+            background: url('{% static 'images/фон2.jpg' %}') no-repeat center top;
             background-size: cover;
             height: 100vh;
             color: white;
@@ -42,11 +53,13 @@
             position: relative;
             z-index: 1001; /* Выше чем навбар */
         }
-        .header h1 {
-            font-size: 3rem;
-        }
-        .container {
-            padding: 2rem;
+        .header-content {
+            border: 2px solid rgba(52, 58, 64, 0.8); /* Цвет рамки с прозрачностью */
+            background-color: rgba(52, 58, 64, 0.7); /* Прозрачный темный фон */
+            color: #ffffff; /* Цвет текста */
+            padding: 20px;
+            border-radius: 10px; /* Скругленные углы */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для объема */
         }
         .card {
             transition: transform 0.3s;
@@ -85,39 +98,99 @@
             color: white;
             font-size: 1.5rem;
         }
-
+        body {
+            font-family: 'PT Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container-1 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .direction-block-1 {
+            background-color: #f0f0f0;
+            width: calc(50% - 10px);
+            margin: 5px 0;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .direction-block-1 img {
+            width: 100px;
+            height: auto;
+        }
+        .direction-block-1 h3 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin: 20px 0 10px;
+        }
+        .direction-block-1 span {
+            font-size: 18px;
+            color: #0a0a0a;
+        }
+        @media (max-width: 768px) {
+            .direction-block-1 {
+                width: calc(100% - 10px);
+            }
+        }
+        .autopark-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .autopark-images img {
+            width: calc(33.333% - 10px); /* Ширина одной трети с учетом отступов */
+            height: 300px; /* Фиксированная высота для всех изображений */
+            object-fit: cover; /* Обеспечивает равномерное обрезание */
+        }
+        @media (max-width: 768px) {
+            .autopark-images img {
+                width: calc(50% - 10px); /* Две колонки на маленьких экранах */
+            }
+        }
+        @media (max-width: 480px) {
+            .autopark-images img {
+                width: 100%; /* Одна колонка на самых маленьких экранах */
+            }
+        }
     </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
-        <img src="{% static 'images/лого.jpg' %}" style="width: 7%" alt="Логотип">
-        <a class="navbar-brand mx-auto" href="{% url 'index' %}"><strong>Logistic Site</strong></a>
+        <img src="{% static 'images/лого.png' %}" style="width: 7%">
+        <a class="navbar-brand mx-auto" href="{% url 'index' %}"><strong>Альбатрос Транс</strong></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
                        href="{% url 'services' %}">Сервисы</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
                        href="{% url 'contact' %}">Контакты</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
                        href="{% url 'faq' %}">FAQ</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
                        href="{% url 'news' %}">Новости</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'about' %}">О
-                        нас</a>
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
+                       href="{% url 'about' %}">О нас</a>
                 </li>
             </ul>
         </div>
@@ -125,8 +198,7 @@
 </nav>
 <div class="header">
     <div class="header-content">
-        <h1>Добро пожаловать в Logistics Company</h1>
-        <p>Logistics Company Logo</p>
+        <h1>Услуги</h1>
     </div>
 </div>
 
@@ -146,254 +218,43 @@
         {% endfor %}
     </div>
 </div>
-</div></div></div>
-<div class="wpb_column vc_column_container vc_col-sm-6 apress_col_id_1930886618669671fc3b803 hover_style_none">
-    <div class="layer vc_column-inner ">
-        <div class="wpb_wrapper">
-            <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_fadeInRight fadeInRight">
-                <div class="wpb_wrapper">
-                    <h2>АВТОПЕРЕВОЗКИ</h2>
-                    <p>Наиболее популярный метод доставки в сфере международных грузоперевозок – доставка авто
-                        транспортом. Благодаря долгим годам работы, у компании ОсОО «Asia Transit Logistic» есть
-                        возможность предложить любой интересующий метод доставки, а также доставку как полных так и
-                        частичных грузов. Одно из несомненных и действительно актуальных преимуществ нашей компании в
-                        наше время доставки частичных/консолидированных грузов (Консолидация/частичная доставка – это
-                        такой метод доставки, когда в одном транспортном средстве перевозятся грузы нескольких
-                        заказчиков). Это преимущество позволяет клиентам так же оперативно получать заказанную продукцию
-                        не смотря на перевозимый объем. Помимо перевозок частичных грузов по странам Западной Европы и
-                        России, компания ОсОО «Asia Transit Logistic» может предложить доставку груза данным методом
-                        доставки из Китая в страны СНГ и Средней Азии.</p>
 
-                </div>
-            </div>
-        </div>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Наш автопарк</h1>
+    <div class="autopark-images">
+        <img src="{% static 'images/фура1.png' %}" alt="Автопарк 1">
+        <img src="{% static 'images/фура2.png' %}" alt="Автопарк 2">
+        <img src="{% static 'images/фура3.png' %}" alt="Автопарк 3">
     </div>
 </div>
-</div>
-<div data-row-text-color="dark" style=" "
-     class="vc_row wpb_row zolo_wpb_row vc_row-fluid apress_row_class_810093603669671fc3e5e4 vc_custom_1568236475142 vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
-    <div class="wpb_column vc_column_container vc_col-sm-6 apress_col_id_1328657538669671fc3f6ec hover_style_none">
-        <div class="layer vc_column-inner ">
-            <div class="wpb_wrapper">
-                <div class="wpb_text_column wpb_content_element ">
-                    <div class="wpb_wrapper">
-                        <h2>ЖЕЛЕЗНОДОРОЖНЫЕ ГРУЗОПЕРЕВОЗКИ</h2>
-                        <p>При перевозке железнодорожным транспортом Вашего груза мы учитываем специфику груза, его
-                            количество и условия поставки. Мы поможем Вам сократить Ваши расходы на доставку груза, но
-                            при этом сохранив качество перевозки. Оснащенность наших складов всей необходимой техникой,
-                            позволяет нам без проблем производить перегрузку груза на железнодорожный транспорт. Для нас
-                            очень важно, чтобы Ваш груз прибыл на конечную станцию в целости и сохранности, поэтому мы
-                            уделяем большое внимание креплению груза. Мы предоставляем любые перевозки железнодорожным
-                            транспортом по территории Европы, странам СНГ, а также перевозки грузов из Китая и других
-                            стран Азии в страны ЕАЭС. Главным образом, мы учитываем все, что касается грузоперевозки
-                            железнодорожным транспортом, а это – специфику перевозимого груза, его количество, условия
-                            поставки, а также рассчитаем оптимальную цену сократив все расходы.</p>
 
-                    </div>
-                </div>
-            </div>
+<footer class="footer mt-5 p-4">
+    <div class="container text-center">
+        <p>&copy; 2024 Logistics Company. All rights reserved.</p>
+        <div class="footer-nav">
+            <a href="{% url 'index' %}" class="btn btn-outline-light btn-sm">Главная</a>
+            <a href="{% url 'about' %}" class="btn btn-outline-light btn-sm">О нас</a>
+            <a href="{% url 'services' %}" class="btn btn-outline-light btn-sm">Сервисы</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-sm">Контакты</a>
+            <a href="{% url 'faq' %}" class="btn btn-outline-light btn-sm">FAQ</a>
+            <a href="{% url 'news' %}" class="btn btn-outline-light btn-sm">Новости</a>
+        </div>
+        <div class="footer-icons mt-3">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                     alt="Instagram"
+                     width="30">
+            </a>
         </div>
     </div>
-    <div class="wpb_column vc_column_container vc_col-sm-6 apress_col_id_763549642669671fc41572 hover_style_none">
-        <div class="layer vc_column-inner ">
-            <div class="wpb_wrapper">
-                <div class="wpb_single_image wpb_content_element vc_align_center  wpb_animate_when_almost_visible wpb_bottom-to-top bottom-to-top">
+</footer>
 
-                    <figure class="wpb_wrapper vc_figure">
-                        <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="630" height="385"
-                                                                                       src="https://asiatransit.kg/wp-content/uploads/2019/06/gd_big.png"
-                                                                                       class="vc_single_image-img attachment-large"
-                                                                                       alt=""
-                                                                                       srcset="https://asiatransit.kg/wp-content/uploads/2019/06/gd_big.png 630w, https://asiatransit.kg/wp-content/uploads/2019/06/gd_big-300x183.png 300w"
-                                                                                       sizes="(max-width: 630px) 100vw, 630px"/>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div data-row-text-color="dark" style=" "
-     class="vc_row wpb_row zolo_wpb_row vc_row-fluid apress_row_class_1348745235669671fc44e6d vc_custom_1568236488072 vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
-    <div class="wpb_column vc_column_container vc_col-sm-6 apress_col_id_1094288225669671fc45f24 hover_style_none">
-        <div class="layer vc_column-inner ">
-            <div class="wpb_wrapper">
-                <div class="wpb_single_image wpb_content_element vc_align_center  wpb_animate_when_almost_visible wpb_bottom-to-top bottom-to-top">
-
-                    <figure class="wpb_wrapper vc_figure">
-                        <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="1024" height="501"
-                                                                                       src="https://asiatransit.kg/wp-content/uploads/2019/06/fly-1024x501.png"
-                                                                                       class="vc_single_image-img attachment-large"
-                                                                                       alt=""
-                                                                                       srcset="https://asiatransit.kg/wp-content/uploads/2019/06/fly-1024x501.png 1024w, https://asiatransit.kg/wp-content/uploads/2019/06/fly-300x147.png 300w, https://asiatransit.kg/wp-content/uploads/2019/06/fly-768x376.png 768w, https://asiatransit.kg/wp-content/uploads/2019/06/fly.png 1416w"
-                                                                                       sizes="(max-width: 1024px) 100vw, 1024px"/>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="wpb_column vc_column_container vc_col-sm-6 apress_col_id_445781378669671fc49575 hover_style_none">
-        <div class="layer vc_column-inner ">
-            <div class="wpb_wrapper">
-                <div class="wpb_text_column wpb_content_element ">
-                    <div class="wpb_wrapper">
-                        <h2>АВИАПЕРЕВОЗКИ</h2>
-                        <p>Одна из наилучших схем доставки груза когда скорость доставки является приоритетом &#8212;
-                            это Авиа метод. Компания ОсОО «Asia Transit Logistic» благодаря долгому и успешному
-                            сотрудничеству с крупнейшими авиалиниями мира, может предложить клиентам компании авиа
-                            доставку с любой страны Евросоюза, и США. Компания ОсОО «Asia Transit Logistic» может
-                            предложить Вам метод доставки любого количества груза, а так же доставку опасного (ADR)
-                            груза.</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div data-row-text-color="dark" style=" "
-     class="vc_row wpb_row zolo_wpb_row vc_row-fluid apress_row_class_1725770037669671fc4b8c9 vc_custom_1568236500471 vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
-    <div class="wpb_column vc_column_container vc_col-sm-6 apress_col_id_1445661494669671fc4c615 hover_style_none">
-        <div class="layer vc_column-inner ">
-            <div class="wpb_wrapper">
-                <div class="wpb_text_column wpb_content_element ">
-                    <div class="wpb_wrapper">
-                        <h2>МОРСКИЕ ПЕРЕВОЗКИ ГРУЗОВ</h2>
-                        <p>При необходимости компания &#171;ASIA TRANSIT LOGISTIC&#187; может организовать международные
-                            морские контейнерные перевозки в любую точку мира.</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="wpb_column vc_column_container vc_col-sm-6 apress_col_id_1312599714669671fc4ee95 hover_style_none">
-        <div class="layer vc_column-inner ">
-            <div class="wpb_wrapper">
-                <div class="wpb_single_image wpb_content_element vc_align_center  wpb_animate_when_almost_visible wpb_bottom-to-top bottom-to-top">
-
-                    <figure class="wpb_wrapper vc_figure">
-                        <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="546" height="259"
-                                                                                       src="https://asiatransit.kg/wp-content/uploads/2019/06/seai.png"
-                                                                                       class="vc_single_image-img attachment-large"
-                                                                                       alt=""
-                                                                                       srcset="https://asiatransit.kg/wp-content/uploads/2019/06/seai.png 546w, https://asiatransit.kg/wp-content/uploads/2019/06/seai-300x142.png 300w"
-                                                                                       sizes="(max-width: 546px) 100vw, 546px"/>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div data-row-text-color="dark" style=" "
-     class="vc_row wpb_row zolo_wpb_row vc_row-fluid apress_row_class_1252262472669671fc5273a vc_custom_1568236510330 vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
-    <div class="wpb_column vc_column_container vc_col-sm-6 apress_col_id_1359214511669671fc53791 hover_style_none">
-        <div class="layer vc_column-inner ">
-            <div class="wpb_wrapper">
-                <div class="wpb_single_image wpb_content_element vc_align_center  wpb_animate_when_almost_visible wpb_bottom-to-top bottom-to-top">
-
-                    <figure class="wpb_wrapper vc_figure">
-                        <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="500" height="250"
-                                                                                       src="https://asiatransit.kg/wp-content/uploads/2019/07/tamogennoe_oformlenie_tovarov1.png"
-                                                                                       class="vc_single_image-img attachment-large"
-                                                                                       alt=""
-                                                                                       srcset="https://asiatransit.kg/wp-content/uploads/2019/07/tamogennoe_oformlenie_tovarov1.png 500w, https://asiatransit.kg/wp-content/uploads/2019/07/tamogennoe_oformlenie_tovarov1-300x150.png 300w"
-                                                                                       sizes="(max-width: 500px) 100vw, 500px"/>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="wpb_column vc_column_container vc_col-sm-6 apress_col_id_667659217669671fc5730f hover_style_none">
-        <div class="layer vc_column-inner ">
-            <div class="wpb_wrapper">
-                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_fadeInUp fadeInUp">
-                    <div class="wpb_wrapper">
-                        <h2>ТАМОЖЕННОЕ ОФОРМЛЕНИЕ</h2>
-                        <p>У компании ОcОО «Asia Transit Logistic» в Прибалтике, Китае, Москве и Бишкеке есть бюро
-                            таможенных посредников и брокеров.</p>
-                        <p>Таможенные брокеры компании постоянно посещают необходимые курсы по улучшению квалификации,
-                            что позволяет им быстро и своевременно справляться с таможенными формальностями и
-                            подготавливать груз для дальнейшей отправки.</p>
-                        <p>Компания «AsiaTransit Logistic Company» предлагает широкий спектр услуг в области таможенного
-                            оформления товаров:<br/>
-                            Рег. номер Реестра Таможенных брокеров № 0123/ТБ-290514</p>
-                        <p>* Организация процесса таможенного оформления экспортных и импортных грузов;<br/>
-                            * Организация таможенного оформления специфичных таможенных режимов: Временный ввоз/вывоз,
-                            Переработка вне таможенной территории, Специальные таможенные режимы, льготное таможенное
-                            оформление, Основные средства, Таможенный склад;<br/>
-                            * Электронное декларирование грузов (ТД1, ТД2);<br/>
-                            * Классификация товаров по кодам ТНВЭД, расчет таможенных платежей;<br/>
-                            * Регистрация писем и представление интересов участников ВЭД в таможенных органах;<br/>
-                            * Перевод и легализация грузосопроводительной документации;<br/>
-                            * Консультирование по вопросам внешнеэкономической деятельности<br/>
-                            * Подготовка дополнительной разрешительной документации в министерствах и ведомствах (ТПП
-                            КР, Госстандарт, ГАС КР, СЭС, Госинспекция по карантину растений, Министерство культуры КР и
-                            др.);</p>
-                        <p>Таким образом, сотрудничая с нами, наши клиенты получают квалифицированную комплексную помощь
-                            в решении необходимых задач. Профессионалы «AsiaTransit LLC» организуют работу таким
-                            образом, чтобы оптимизировать временные затраты, минимизировать все возможные риски и
-                            расходы клиентов, а также минимальное участие клиента в процессе таможенного оформления. При
-                            этом мы предлагаем конкурентоспособные цены на услуги и предоставляем финансовые гарантии
-                            выполнения своих обязательств.</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div data-row-text-color="dark" style=" "
-     class="vc_row wpb_row zolo_wpb_row vc_row-fluid apress_row_class_1680862127669671fc5a080 vc_custom_1568236523349 vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
-    <div class="wpb_column vc_column_container vc_col-sm-6 apress_col_id_994896045669671fc5b417 hover_style_none">
-        <div class="layer vc_column-inner ">
-            <div class="wpb_wrapper">
-                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_fadeInUp fadeInUp">
-                    <div class="wpb_wrapper">
-                        <h2>СКЛАДИРОВАНИЕ ГРУЗОВ</h2>
-                        <p>В Прибалтике (Литва и Латвия), Китае у компании ОcОО «Asia Transit Logistic» размещены
-                            таможенные склады (терминалы), собственные склады в г. Москве и в г. Бишкек. Терминалы
-                            снабжены необходимой современной техникой, которая позволяет проводить
-                            погрузочно-разгрузочные работы качественно и быстро.</p>
-                        <p>Склады компании ОcОО «Asia Transit Logistic» предлагает полный комплекс услуг складских
-                            работ:<br/>
-                            -Погрузочно-разгрузочные работы;<br/>
-                            &#8212; Хранение груза;<br/>
-                            &#8212; Сортировка, переупаковка и перепалетирование груза;<br/>
-                            &#8212; Измерение, оценка груза;<br/>
-                            &#8212; Работа с транзитными грузами</p>
-
-                    </div>
-                </div>
-
-                <footer class="footer mt-5">
-                    <div class="container text-center">
-                        <span>© 2024 Logistic Site. Все права защищены.</span>
-                        <div class="footer-links mt-3">
-                            <a href="{% url 'services' %}" class="btn btn-outline-light btn-sm">Сервисы</a>
-                            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-sm">Контакты</a>
-                            <a href="{% url 'faq' %}" class="btn btn-outline-light btn-sm">FAQ</a>
-                            <a href="{% url 'news' %}" class="btn btn-outline-light btn-sm">Новости</a>
-                        </div>
-                        <div class="footer-icons mt-3">
-                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                                     alt="Instagram"
-                                     width="30">
-                            </a>
-                        </div>
-                    </div>
-                </footer>
-                <!-- Подключение Bootstrap JS и Popper.js -->
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                        crossorigin="anonymous"></script>
-                <script>
+<!-- Подключение Bootstrap JS и Popper.js -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script>
     window.addEventListener('scroll', function () {
         var navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
@@ -402,9 +263,8 @@
             navbar.classList.remove('scrolled');
         }
     });
-
-                </script>
-                <script>
+</script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         const navbarToggler = document.querySelector('.navbar-toggler');
         const navbar = document.querySelector('.navbar');
@@ -417,11 +277,9 @@
             }
         });
     });
-
-                </script>
-
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                        crossorigin="anonymous"></script>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 </html>

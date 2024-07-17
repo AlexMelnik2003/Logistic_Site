@@ -6,27 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <title>Контакты - Logistics Company</title>
     <style>
-        /* Custom styles */
+        #scrollTopBtn {
+            display: none; /* По умолчанию скрываем кнопку */
+            position: fixed; /* Фиксированное положение на странице */
+            bottom: 20px;
+            right: 20px;
+            z-index: 99; /* Устанавливаем высокий z-index, чтобы кнопка оставалась поверх других элементов */
+        }
         .navbar {
             background-color: transparent;
             transition: background-color 0.5s ease;
         }
 
-        .navbar.scrolled,
+        .navbar.scrolled {
+            background-color: white !important;
+        }
         .navbar.toggled {
             background-color: white !important;
         }
+        .navbar-nav .nav-link {
+            font-size: 1.2rem; /* Увеличенный размер текста */
+            padding: 10px 20px; /* Увеличенные отступы */
+            border-radius: 25px; /* Закругленные края */
+            font-weight: bold; /* Жирный текст */
+            text-decoration: underline; /* Подчеркнутый текст */
+        }
 
+        .navbar-nav .nav-item {
+            margin: 0 10px; /* Расстояние между кнопками */
+        }
+
+        .header {
+            background: url('{% static 'images/фон3.png' %}') no-repeat center top;
+            background-size: cover;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .header-content {
+            position: relative;
+            z-index: 1001; /* Выше чем навбар */
+        }
+        .header-content {
+            border: 2px solid rgba(52, 58, 64, 0.8); /* Цвет рамки с прозрачностью */
+            background-color: rgba(52, 58, 64, 0.7); /* Прозрачный темный фон */
+            color: #ffffff; /* Цвет текста */
+            padding: 20px;
+            border-radius: 10px; /* Скругленные углы */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для объема */
+        }
+        .card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
         .footer {
             background-color: #343a40;
             color: white;
             position: relative;
             bottom: 0;
             width: 100%;
-            padding: 20px 0;
         }
 
         .footer a {
@@ -38,43 +89,74 @@
             text-decoration: underline;
         }
 
+        .footer-icons {
+            margin-top: 10px;
+        }
+
         .footer-icons a {
             margin: 0 10px;
             color: white;
             font-size: 1.5rem;
         }
-
-        .service-card {
-            margin-bottom: 30px;
+        body {
+            font-family: 'PT Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
         }
-
-        .service-card .card-img-top {
-            height: 200px; /* Adjust height as needed */
-            object-fit: cover;
+        .container-1 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-
-        .service-card .card-body {
-            padding: 1.25rem;
+        .direction-block-1 {
+            background-color: #f0f0f0;
+            width: calc(50% - 10px);
+            margin: 5px 0;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
         }
-
-        .service-card .card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 10px;
+        .direction-block-1 img {
+            width: 100px;
+            height: auto;
         }
-
-        .service-card .card-text {
-            font-size: 1rem;
-            color: #6c757d;
+        .direction-block-1 h3 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin: 20px 0 10px;
         }
-
-        /* Center align columns on medium devices and above */
-        @media (min-width: 768px) {
-            .service-card .card {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                height: 100%;
+        .direction-block-1 span {
+            font-size: 18px;
+            color: #0a0a0a;
+        }
+        @media (max-width: 768px) {
+            .direction-block-1 {
+                width: calc(100% - 10px);
+            }
+        }
+        .autopark-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .autopark-images img {
+            width: calc(33.333% - 10px); /* Ширина одной трети с учетом отступов */
+            height: 300px; /* Фиксированная высота для всех изображений */
+            object-fit: cover; /* Обеспечивает равномерное обрезание */
+        }
+        @media (max-width: 768px) {
+            .autopark-images img {
+                width: calc(50% - 10px); /* Две колонки на маленьких экранах */
+            }
+        }
+        @media (max-width: 480px) {
+            .autopark-images img {
+                width: 100%; /* Одна колонка на самых маленьких экранах */
             }
         }
     </style>
@@ -82,44 +164,65 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
-        <img src="{% static 'images/лого.jpg' %}" style="width: 7%">
-        <a class="navbar-brand mx-auto" href="{% url 'index' %}"><strong>Logistic Site</strong></a>
+        <img src="{% static 'images/лого.png' %}" style="width: 7%">
+        <a class="navbar-brand mx-auto" href="{% url 'index' %}"><strong>Альбатрос Транс</strong></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
                        href="{% url 'services' %}">Сервисы</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold"
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
                        href="{% url 'contact' %}">Контакты</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'faq' %}">FAQ</a>
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
+                       href="{% url 'faq' %}">FAQ</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'news' %}">Новости</a>
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
+                       href="{% url 'news' %}">Новости</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary btn-lg btn-md btn-sm fw-bold" href="{% url 'about' %}">О нас</a>
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
+                       href="{% url 'about' %}">О нас</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-    <div class="container">
+<div class="header">
+    <div class="header-content">
         <h1>Контакты</h1>
-        <p>Свяжитесь с нами, используя форму ниже:</p>
+    </div>
+</div>
+<div class="container my-5">
+    <div class="contact-form">
+        <h2>Свяжитесь с нами</h2>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Отправить</button>
+            <div class="mb-3">
+                <label for="id_name" class="form-label">Имя</label>
+                <input type="text" class="form-control" id="id_name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="id_email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="id_email" name="email" required>
+                <div class="form-text">Ваш email не будет передан третьим лицам.</div>
+            </div>
+            <div class="mb-3">
+                <label for="id_message" class="form-label">Сообщение</label>
+                <textarea class="form-control" id="id_message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
         </form>
     </div>
+</div>
 <footer class="footer mt-auto py-3">
     <div class="container text-center">
         <span>© 2024 Logistic Site. Все права защищены.</span>
@@ -130,20 +233,46 @@
             <a href="{% url 'news' %}" class="btn btn-outline-light btn-sm">Новости</a>
         </div>
         <div class="footer-icons mt-3">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"
-                     width="30">
+            <a href="https://www.facebook.com" target="_blank" class="btn btn-outline-light btn-sm">
+                <i class="fab fa-facebook-f"></i>
             </a>
-
+            <a href="https://www.instagram.com" target="_blank" class="btn btn-outline-light btn-sm">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.twitter.com" target="_blank" class="btn btn-outline-light btn-sm">
+                <i class="fab fa-twitter"></i>
+            </a>
         </div>
     </div>
 </footer>
-
-<!-- Подключение Bootstrap JS и Popper.js -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gybVuLkDIK7D5wH7x9a1F+Wf10EMkNmwK5a77D1pql6yDg5Kig"
         crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-qm4GAWRCH01+jAcCNgycQPDfy2t9LPb7Tkrh9RI2UQIvRqVbHxqB8CAB6DYVjk8M"
+        crossorigin="anonymous"></script>
+<script>
+    window.addEventListener('scroll', function () {
+        var navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbar = document.querySelector('.navbar');
+
+        navbarToggler.addEventListener('click', function () {
+            if (navbar.classList.contains('toggled')) {
+                navbar.classList.remove('toggled');
+            } else {
+                navbar.classList.add('toggled');
+            }
+        });
+    });
+</script>
 </body>
 </html>
