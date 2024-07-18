@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/лого.png' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <title>Новости - Logistics Company</title>
+    <title>Новости - Альбатрос Транс</title>
     <style>
         #scrollTopBtn {
             display: none; /* По умолчанию скрываем кнопку */
@@ -181,6 +182,13 @@
                     <a class="nav-link btn btn-outline-secondary btn-lg fw-bold"
                        href="{% url 'about' %}">О нас</a>
                 </li>
+                <li class="nav-item mx-2">
+                    <p>+996 555 27 90 90</p>
+                    <p>+996 772 55 20 28</p>
+                </li>
+                <li class="nav-item mx-2">
+                    <p>albatros.yilmazer@gmail.com</p>
+                </li>
             </ul>
         </div>
     </div>
@@ -213,18 +221,19 @@
 
 <footer class="footer mt-5 py-3"> <!-- Увеличил отступ до футера -->
     <div class="container text-center">
-        <span>© 2024 Logistic Site. Все права защищены.</span>
+        <span>© 2024 Альбатрос Транс. Все права защищены.</span>
         <div class="footer-links mt-3">
+            <a href="{% url 'index' %}" class="btn btn-outline-light btn-sm">Главная</a>
+            <a href="{% url 'about' %}" class="btn btn-outline-light btn-sm">О нас</a>
             <a href="{% url 'services' %}" class="btn btn-outline-light btn-sm">Сервисы</a>
             <a href="{% url 'contact' %}" class="btn btn-outline-light btn-sm">Контакты</a>
             <a href="{% url 'faq' %}" class="btn btn-outline-light btn-sm">FAQ</a>
             <a href="{% url 'news' %}" class="btn btn-outline-light btn-sm">Новости</a>
         </div>
         <div class="footer-icons mt-3">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"
-                     width="30">
-            </a>
+            <p>+996 555 27 90 90</p>
+            <p>+996 772 55 20 28</p>
+            <p>albatros.yilmazer@gmail.com</p>
         </div>
     </div>
 </footer>
