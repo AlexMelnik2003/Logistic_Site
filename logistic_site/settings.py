@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-jt21+r-857p5le6+z+61ac)nv-5e$c4+5z4rkxzkt%a@l7lt5i
 DEBUG = True
 
 ALLOWED_HOSTS = ['albatrostrans.kg',
-                 'www.albatrostrans.kg',
+                 'www.albatrostrans.kg', '*'
                  ]
 
 CSRF_TRUSTED_ORIGINS = [
