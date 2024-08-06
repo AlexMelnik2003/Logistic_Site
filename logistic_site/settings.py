@@ -30,8 +30,7 @@ ALLOWED_HOSTS = ['albatrostrans.kg',
 
 CSRF_TRUSTED_ORIGINS = [
     'https://albatrostrans.kg',
-    'https://www.albatrostrans.kg',
-]
+    'https://www.albatrostrans.kg', ]
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
